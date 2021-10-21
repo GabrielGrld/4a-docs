@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from authApp import views
+from authApp.models.producto import Producto
 from authApp.views import userDeleteView
 from authApp.views import userUpdateView
+from authApp.views.productoView import ProductoDeleteView
 
 
 urlpatterns = [
@@ -33,16 +35,19 @@ urlpatterns = [
     path('productos/all/', views.ProductoView.as_view()), #ver todos los productos
     path('productos/filtered/<int:pk>/', views.ProductoFilteredView.as_view()), #ver productos filtrados 
     path('productos/create/', views.ProductoCreateView.as_view()), #crear un producto
+    path('productos/delete/<int:pk>/', views.ProductoDeleteView.as_view()), #borrar un producto
+    path('productos/update/<int:pk>/', views.ProductoUpdateView.as_view()), #actializar un producto
 
     #URL´s de PQR
-    path('pqr/consult/', views.PqrConsultView.as_view()), #consultar todas las PQR´s
     path('pqr/create/', views.PqrCreateView.as_view()), #crear una PQR
     path('pqr/delete/', views.PqrDeleteView.as_view()), #borrar una PQR
-    path('pqr/filtered/', views.PqrFilteredView.as_view()), #ver PRQ filtrada
-    path('pqr/update/', views.PqrUpdateView.as_view()), #actualizar una PQR
+    path('pqr/filtered/<int:user>/<int:pk>/', views.PqrDetailView.as_view()), #ver PRQ filtrada
+    path('pqr/update/<int:user>/<int:pk>/', views.PqrUpdateView.as_view()), #actualizar una PQR
    
-    #URL´s de factura 
-    path('factura/create/', views.FacturaCreateView.as_view()), #crear factura 
-    path('factura/filteres/', views.FacturaFilteredView.as_view()), #ver factura
+    #URLS para peticiones del modelo factura
+     path('factura/create/', views.FacturaCreateView.as_view()),
+     path('factura/detail/<int:user>/<int:pk>/', views.FacturaDetailView.as_view()),
+     path('factura/update/<int:user>/<int:pk>/', views.FacturaUpdateView.as_view()),
+     path('factura/delete/<int:user>/<int:pk>/', views.FacturaDeleteView.as_view()),
    
 ]

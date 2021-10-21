@@ -8,14 +8,16 @@ from .userUpdateView import UserUpdateView
 from .productoView import ProductoView
 from .productoView import ProductoCreateView
 from .productoView import ProductoFilteredView
+from .productoView import ProductoDeleteView
+from .productoView import ProductoUpdateView
 
 #Vistas de PQR
-from .pqrView import PqrConsultView
 from .pqrView import PqrCreateView
-from .pqrView import PqrDeleteView
-from .pqrView import PqrFilteredView
+from .pqrView import PqrDetailView
 from .pqrView import PqrUpdateView
+from .pqrView import PqrDeleteView
+
 
 #Vistas de factura
-from.facturaView import FacturaCreateView
-from.facturaView import FacturaFilteredView
+from.facturaView import FacturaCreateView, FacturaDetailView, FacturaUpdateView, FacturaDeleteView
+
